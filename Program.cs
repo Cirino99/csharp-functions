@@ -38,6 +38,26 @@ int SommaElementiArrayRicorsivo(int[] array, int i)
         return array[i] + SommaElementiArrayRicorsivo(array, i + 1);
     return array[i];
 }
+int Fattoriale(int n)
+{
+    if (n > 0)
+        return n * Fattoriale(n-1);
+    return 1;
+}
+void Fibonacci(int n, int n1, int n2, int i)
+{
+    if (n <= 0)
+        Console.WriteLine(0);
+    else if (n == 1)
+        Console.WriteLine(1);
+    if (i<n)
+    {
+        int n3 = n1 + n2;
+        Fibonacci(n, n2, n3, i + 1);
+    } else
+        Console.WriteLine(n2);
+}
+
 
 int[] arrayStatico = { 2, 6, 7, 5, 3, 9 };
 Console.WriteLine("Quanti numeri vuoi inserire?");
@@ -55,3 +75,7 @@ StampaArray(array);
 Console.WriteLine(SommaElementiArray(array));
 Console.WriteLine(SommaElementiArrayRicorsivo(array, 0));
 Console.WriteLine(SommaElementiArray(arrayQuadrato));
+Console.WriteLine("Inserisci un numero");
+int numero = Convert.ToInt32(Console.ReadLine());
+Console.WriteLine(Fattoriale(numero));
+Fibonacci(numero,0,1,1);
