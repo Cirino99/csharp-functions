@@ -40,18 +40,44 @@ int SommaElementiArrayRicorsivo(int[] array, int i)
 }
 int Fattoriale(int n)
 {
+    int fattoriale = 1;
+    if (n == 0)
+        return fattoriale;
+    for (int i = 1; i <= n; i++)
+        fattoriale = fattoriale * i;
+    return fattoriale;
+}
+int FattorialeRicorsivo(int n)
+{
     if (n > 0)
-        return n * Fattoriale(n-1);
+        return n * FattorialeRicorsivo(n-1);
     return 1;
 }
 int Fibonacci(int n)
 {
     if (n <= 0)
         return 0;
+    if (n == 1)
+        return 1;
+    int n1 = 1;
+    int n2 = 1;
+    int fibonacci = 0;
+    for(int i=2; i<n; i++)
+    {
+        fibonacci = n1 + n2;
+        n1 = n2;
+        n2 = fibonacci;
+    }
+    return fibonacci;
+}
+int FibonacciRicorsivo(int n)
+{
+    if (n <= 0)
+        return 0;
     else if (n == 1)
         return 1;
     else
-        return Fibonacci(n - 1) + Fibonacci(n - 2);
+        return FibonacciRicorsivo(n - 1) + FibonacciRicorsivo(n - 2);
 }
 
 
@@ -74,4 +100,6 @@ Console.WriteLine(SommaElementiArray(arrayQuadrato));
 Console.WriteLine("Inserisci un numero");
 int numero = Convert.ToInt32(Console.ReadLine());
 Console.WriteLine(Fattoriale(numero));
+Console.WriteLine(FattorialeRicorsivo(numero));
+Console.WriteLine(FibonacciRicorsivo(numero));
 Console.WriteLine(Fibonacci(numero));
