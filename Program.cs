@@ -32,6 +32,12 @@ int SommaElementiArray(int[] array)
     }
     return somma;
 }
+int SommaElementiArrayRicorsivo(int[] array, int i)
+{
+    if(i < array.Length - 1)
+        return array[i] + SommaElementiArrayRicorsivo(array, i + 1);
+    return array[i];
+}
 
 int[] arrayStatico = { 2, 6, 7, 5, 3, 9 };
 Console.WriteLine("Quanti numeri vuoi inserire?");
@@ -47,4 +53,5 @@ int[] arrayQuadrato = ElevaArrayAlQuadrato(array);
 StampaArray(arrayQuadrato);
 StampaArray(array);
 Console.WriteLine(SommaElementiArray(array));
+Console.WriteLine(SommaElementiArrayRicorsivo(array, 0));
 Console.WriteLine(SommaElementiArray(arrayQuadrato));
