@@ -44,18 +44,14 @@ int Fattoriale(int n)
         return n * Fattoriale(n-1);
     return 1;
 }
-void Fibonacci(int n, int n1, int n2, int i)
+int Fibonacci(int n)
 {
     if (n <= 0)
-        Console.WriteLine(0);
+        return 0;
     else if (n == 1)
-        Console.WriteLine(1);
-    if (i<n)
-    {
-        int n3 = n1 + n2;
-        Fibonacci(n, n2, n3, i + 1);
-    } else
-        Console.WriteLine(n2);
+        return 1;
+    else
+        return Fibonacci(n - 1) + Fibonacci(n - 2);
 }
 
 
@@ -78,4 +74,4 @@ Console.WriteLine(SommaElementiArray(arrayQuadrato));
 Console.WriteLine("Inserisci un numero");
 int numero = Convert.ToInt32(Console.ReadLine());
 Console.WriteLine(Fattoriale(numero));
-Fibonacci(numero,0,1,1);
+Console.WriteLine(Fibonacci(numero));
