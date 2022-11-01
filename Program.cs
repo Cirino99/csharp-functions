@@ -79,6 +79,57 @@ int FibonacciRicorsivo(int n)
     else
         return FibonacciRicorsivo(n - 1) + FibonacciRicorsivo(n - 2);
 }
+string CifrarioCesare(string frase, int chiave)
+{
+    char[] alfabeto = { 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'z' };
+    char[] fraseScomposta = frase.ToCharArray();
+    string fraseCifrata = "";
+    for(int i=0; i<frase.Length; i++)
+    {
+        int j = 0;
+        for(; j<alfabeto.Length; j++)
+        {
+            if (fraseScomposta[i] == alfabeto[j])
+            {
+                break;
+            }
+        }
+        if(j + chiave > alfabeto.Length - 1)
+        {
+            fraseCifrata += alfabeto[j + chiave - alfabeto.Length];
+        } else
+        {
+            fraseCifrata += alfabeto[j + chiave];
+        }
+    }
+    return fraseCifrata;
+}
+string DecifrarioCesare(string frase, int chiave)
+{
+    char[] alfabeto = { 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'z' };
+    char[] fraseScomposta = frase.ToCharArray();
+    string fraseDecifrata = "";
+    for (int i = 0; i < frase.Length; i++)
+    {
+        int j = 0;
+        for (; j < alfabeto.Length; j++)
+        {
+            if (fraseScomposta[i] == alfabeto[j])
+            {
+                break;
+            }
+        }
+        if (j - chiave < 0)
+        {
+            fraseDecifrata += alfabeto[j - chiave + alfabeto.Length];
+        }
+        else
+        {
+            fraseDecifrata += alfabeto[j - chiave];
+        }
+    }
+    return fraseDecifrata;
+}
 
 
 int[] arrayStatico = { 2, 6, 7, 5, 3, 9 };
@@ -103,3 +154,14 @@ Console.WriteLine(Fattoriale(numero));
 Console.WriteLine(FattorialeRicorsivo(numero));
 Console.WriteLine(FibonacciRicorsivo(numero));
 Console.WriteLine(Fibonacci(numero));
+Console.WriteLine("Vuoi cifrare o decifrare?");
+Console.WriteLine("Inserisci 1 per cifrare o 2 per decifrare");
+int scelta = Convert.ToInt32(Console.ReadLine());
+Console.WriteLine("Inserisci una frase frase senza spazzi");
+string frase = Console.ReadLine();
+Console.WriteLine("Inserisci una chiave numerica");
+int chiave = Convert.ToInt32(Console.ReadLine());
+if (scelta == 1)
+    Console.WriteLine("La tua frase cifrata è: " + CifrarioCesare(frase, chiave));
+else
+    Console.WriteLine("La tua frase decifrata è: " + DecifrarioCesare(frase, chiave));
