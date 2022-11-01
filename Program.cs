@@ -79,54 +79,80 @@ int FibonacciRicorsivo(int n)
     else
         return FibonacciRicorsivo(n - 1) + FibonacciRicorsivo(n - 2);
 }
+//string CifrarioCesare(string frase, int chiave)
+//{
+//    char[] alfabeto = { 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'z' };
+//    char[] fraseScomposta = frase.ToCharArray();
+//    string fraseCifrata = "";
+//    for(int i=0; i<frase.Length; i++)
+//    {
+//        int j = 0;
+//        for(; j<alfabeto.Length; j++)
+//        {
+//            if (fraseScomposta[i] == alfabeto[j])
+//            {
+//                break;
+//            }
+//        }
+//        if(j + chiave > alfabeto.Length - 1)
+//        {
+//            fraseCifrata += alfabeto[j + chiave - alfabeto.Length];
+//        } else
+//        {
+//            fraseCifrata += alfabeto[j + chiave];
+//        }
+//    }
+//    return fraseCifrata;
+//}
 string CifrarioCesare(string frase, int chiave)
 {
-    char[] alfabeto = { 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'z' };
     char[] fraseScomposta = frase.ToCharArray();
     string fraseCifrata = "";
-    for(int i=0; i<frase.Length; i++)
+    for (int i = 0; i < frase.Length; i++)
     {
-        int j = 0;
-        for(; j<alfabeto.Length; j++)
-        {
-            if (fraseScomposta[i] == alfabeto[j])
-            {
-                break;
-            }
-        }
-        if(j + chiave > alfabeto.Length - 1)
-        {
-            fraseCifrata += alfabeto[j + chiave - alfabeto.Length];
-        } else
-        {
-            fraseCifrata += alfabeto[j + chiave];
-        }
+        int posizone = Convert.ToInt32(fraseScomposta[i]) + chiave;
+        if (posizone > 122)
+            posizone -= 26;
+        fraseCifrata += Convert.ToChar(posizone);
     }
     return fraseCifrata;
 }
+//string DecifrarioCesare(string frase, int chiave)
+//{
+//    char[] alfabeto = { 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'z' };
+//    char[] fraseScomposta = frase.ToCharArray();
+//    string fraseDecifrata = "";
+//    for (int i = 0; i < frase.Length; i++)
+//    {
+//        int j = 0;
+//        for (; j < alfabeto.Length; j++)
+//        {
+//            if (fraseScomposta[i] == alfabeto[j])
+//            {
+//                break;
+//            }
+//        }
+//        if (j - chiave < 0)
+//        {
+//            fraseDecifrata += alfabeto[j - chiave + alfabeto.Length];
+//        }
+//        else
+//        {
+//            fraseDecifrata += alfabeto[j - chiave];
+//        }
+//    }
+//    return fraseDecifrata;
+//}
 string DecifrarioCesare(string frase, int chiave)
 {
-    char[] alfabeto = { 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'z' };
     char[] fraseScomposta = frase.ToCharArray();
     string fraseDecifrata = "";
     for (int i = 0; i < frase.Length; i++)
     {
-        int j = 0;
-        for (; j < alfabeto.Length; j++)
-        {
-            if (fraseScomposta[i] == alfabeto[j])
-            {
-                break;
-            }
-        }
-        if (j - chiave < 0)
-        {
-            fraseDecifrata += alfabeto[j - chiave + alfabeto.Length];
-        }
-        else
-        {
-            fraseDecifrata += alfabeto[j - chiave];
-        }
+        int posizone = Convert.ToInt32(fraseScomposta[i]) - chiave;
+        if (posizone < 97)
+            posizone += 26;
+        fraseDecifrata += Convert.ToChar(posizone);
     }
     return fraseDecifrata;
 }
