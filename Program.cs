@@ -61,7 +61,7 @@ int Fibonacci(int n)
         return 1;
     int n1 = 1;
     int n2 = 1;
-    int fibonacci = 0;
+    int fibonacci = 1;
     for(int i=2; i<n; i++)
     {
         fibonacci = n1 + n2;
